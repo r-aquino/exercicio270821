@@ -1,0 +1,29 @@
+-- Exercicio do dia 27/08/21 - Aqui Educa - SQL 
+-- Rafael Aquino
+
+CREATE TABLE IF NOT EXISTS public.farmacia
+(
+    id integer NOT NULL,
+    preco money NOT NULL,
+    tarja character varying COLLATE pg_catalog."default",
+    nome character varying COLLATE pg_catalog."default",
+    CONSTRAINT farmacia_pkey PRIMARY KEY (id),
+    CONSTRAINT u_nome UNIQUE (nome);
+
+insert into farmacia(id,preco,tarja,nome) values(001, 85.42, 'vermelha', 'diazepan');
+insert into farmacia(id,preco,tarja,nome) values(002, 64.50, 'preta', 'zolpiden');
+insert into farmacia(id,preco,tarja,nome) values(003, 45.90, 'amarela', 'zopiclona');
+
+CREATE SEQUENCE public.seq_id
+    INCREMENT 1
+    START 3
+    MINVALUE 1
+    MAXVALUE 99999999
+    CACHE 1;
+
+ALTER SEQUENCE public.seq_id
+    OWNER TO postgres;
+
+select * from farmacia;
+
+SELECT * FROM farmacia WHERE id=002;
